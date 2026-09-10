@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import AppShell from "../../components/AppShell";
 import Crumb from "../../components/Crumb";
@@ -32,6 +32,14 @@ const TOTAL_OPTIONS = ["إجمالي المستحق", "إجمالي المدفو
 const DEFAULT_TOTALS = ["إجمالي المستحق", "إجمالي المدفوع", "الرصيد", "النص (مدين/دائن)"];
 
 export default function BuilderPage() {
+  return (
+    <Suspense fallback={<div className="loading">⏳ جاري التحميل...</div>}>
+      <BuilderInner />
+    </Suspense>
+  );
+}
+
+function BuilderInner() {
   const searchParams = useSearchParams();
   const preselectedParty = searchParams.get("party") || "";
 
