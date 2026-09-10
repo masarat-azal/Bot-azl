@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState, Suspense } from "react";
+
 import AppShell from "../../components/AppShell";
 import Crumb from "../../components/Crumb";
 import { api } from "../../lib/api";
