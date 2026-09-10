@@ -6,13 +6,32 @@ import { useTheme } from "../lib/ThemeProvider";
 const TELEGRAM_BOT_URL = "https://t.me/masaratazal_acc_bot";
 
 export default function AppShell({ children, showTopbar = true }) {
-  const { toggle } = useTheme();
+  const { mode, toggle } = useTheme();
 
   return (
     <>
       <div className="deco-shape deco1" />
       <div className="deco-shape deco2" />
       <div className="deco-shape deco3" />
+      <div className="geo-corner geo-tl" />
+      <div className="geo-corner geo-br" />
+
+      {/* الـ Rail الجانبي — يظهر بالتابلت/الديسكتوب فقط (CSS) */}
+      <div className="rail">
+        <a className="railbtn" href="/" aria-label="الرئيسية">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
+            <rect x="3" y="3" width="7" height="7" rx="1.5" />
+            <rect x="14" y="3" width="7" height="7" rx="1.5" />
+            <rect x="3" y="14" width="7" height="7" rx="1.5" />
+            <rect x="14" y="14" width="7" height="7" rx="1.5" />
+          </svg>
+        </a>
+        <a className="railbtn tg" href={TELEGRAM_BOT_URL} target="_blank" rel="noreferrer" aria-label="فتح بوت تليجرام">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff">
+            <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z" />
+          </svg>
+        </a>
+      </div>
 
       <div className="app">
         {showTopbar && (
@@ -24,7 +43,7 @@ export default function AppShell({ children, showTopbar = true }) {
               </div>
             </div>
             <button className="themebtn" onClick={toggle}>
-              🌓 الثيم
+              {mode === "dark" ? "🌙" : "☀️"} اليوم
             </button>
           </div>
         )}
