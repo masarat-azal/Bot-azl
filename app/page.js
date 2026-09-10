@@ -16,13 +16,13 @@ const SERVICES = [
   { key: "daily", label: "عمليات اليوم", icon: "🗓️", href: "/daily" },
   { key: "backup", label: "نسخة احتياطية", icon: "☁️", href: "/backup" },
   { key: "builder", label: "صناعة الكشوف", icon: "🧩", href: "/builder" },
-  { key: "archive", label: "الأرشيف", icon: "🗂️", href: "/archive" },
+  { key: "archive", label: "الأرشيف", icon: "🗂", href: "/archive" },
   { key: "settings", label: "الإعدادات", icon: "⚙️", href: "/settings" },
   { key: "account", label: "الحساب", icon: "👤", href: "/account" },
 ];
 
 export default function HomePage() {
-  const [picker, setPicker] = useState(null); // 'customer' | 'supplier' | 'warehouse' | null
+  const [picker, setPicker] = useState(null);
   const [pickerItems, setPickerItems] = useState([]);
   const [pickerLoading, setPickerLoading] = useState(false);
   const [daily, setDaily] = useState(null);
@@ -53,7 +53,7 @@ export default function HomePage() {
     <AppShell>
       <div className="page-pad">
         <div className="hero">
-          <div className="heroDeco" />
+          <img className="hero-banner-img" src="/images/banner-truck.jpg" alt="" />
           <div className="hero-inner">
             <Logo size={54} />
             <div>
@@ -68,7 +68,7 @@ export default function HomePage() {
           <input placeholder="بحث سريع..." disabled />
         </div>
 
-        <div className="sectitle">— الخدمات —</div>
+        <div className="sectitle">الخدمات</div>
         <div className="grid-services">
           {SERVICES.map((s) =>
             s.picker ? (
