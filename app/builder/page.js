@@ -93,7 +93,8 @@ const [themeKey, setThemeKey] = useState("light");
 
       if (isWarehouse) {
         const data = await api.warehouse(party);
-        const filtered = filterByPeriod(data.rows, from, to);
+                const filtered = filterByPeriod(data.rows, from, to);
+        filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
         rows = filtered.map((r, i) => ({
           num: i + 1, date: fmtDate(r.date), op: r.op, opText: r.type, location: "—", item: "—",
           qty: r.qty.toLocaleString("en-US"), price: "—", total: r.qty.toLocaleString("en-US") + " لتر",
@@ -103,7 +104,8 @@ const [themeKey, setThemeKey] = useState("light");
         periodText = periodLabel(from, to, filtered);
       } else {
         const data = await api.party(party);
-        const filtered = filterByPeriod(data.rows, from, to);
+                const filtered = filterByPeriod(data.rows, from, to);
+        filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
         byItem = {};
         filtered.forEach((r) => {
           if (!r.item) return;
