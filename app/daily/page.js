@@ -28,7 +28,7 @@ export default function DailyPage() {
             title="كل عمليات آخر ١٠ أيام"
             rows={rows.map((d) => ({
               desc: d.desc || `${d.kind === "sale" ? "بيع" : "شراء"} — ${d.party}`,
-              date: fmtDate(d.date),
+              date: d.date,
               amount: d.amount,
               positive: d.kind === "sale",
             }))}
