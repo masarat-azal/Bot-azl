@@ -51,7 +51,7 @@ function BuilderInner() {
   const [cols, setCols] = useState(DEFAULT_COLS);
   const [totalsSel, setTotalsSel] = useState(DEFAULT_TOTALS);
   const [freeText, setFreeText] = useState("");
-  const [themeKey, setThemeKey] = useState("1");
+const [themeKey, setThemeKey] = useState("light");
   const [format, setFormat] = useState("pdf");
   const [orientation, setOrientation] = useState("landscape");
   const [opStyle, setOpStyle] = useState("full");
